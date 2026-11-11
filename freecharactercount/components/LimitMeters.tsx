@@ -6,43 +6,32 @@ type LimitMetersProps = {
 
 export function LimitMeters({ statuses }: LimitMetersProps) {
   return (
-    <section className="mx-auto w-full max-w-[760px]">
-      <h2 className="text-center font-display text-2xl text-[var(--ink)]">
-        Social &amp; SEO limits
-      </h2>
-      <p className="mt-1 text-center text-sm text-[var(--muted)]">
+    <section className="section limits">
+      <h2 className="section__title">Social &amp; SEO limits</h2>
+      <p className="section__subtitle">
         See how your character count fits common platform caps
       </p>
 
-      <ul className="mt-6 grid gap-3 sm:grid-cols-2">
+      <ul className="limits__list">
         {statuses.map((status) => {
           const over = status.over;
           return (
-            <li
-              key={status.id}
-              className="rounded-xl border border-[var(--line)] bg-[var(--surface)] px-4 py-3"
-            >
-              <div className="flex items-baseline justify-between gap-2">
-                <span className="text-sm font-medium text-[var(--ink)]">
-                  {status.label}
-                </span>
+            <li key={status.id} className="limits__card">
+              <div className="limits__row">
+                <span className="limits__name">{status.label}</span>
                 <span
-                  className={`text-xs tabular-nums ${
-                    over ? "text-[var(--danger)]" : "text-[var(--muted)]"
-                  }`}
+                  className={`limits__count${over ? " limits__count--over" : ""}`}
                 >
                   {status.used.toLocaleString()} / {status.limit.toLocaleString()}
                 </span>
               </div>
-              <div className="mt-2 h-1.5 overflow-hidden rounded-full bg-[var(--track)]">
+              <div className="limits__track">
                 <div
-                  className={`limit-bar h-full rounded-full transition-[width] duration-300 ease-out ${
-                    over ? "bg-[var(--danger)]" : "bg-[var(--accent)]"
-                  }`}
+                  className={`limits__fill${over ? " limits__fill--over" : ""}`}
                   style={{ width: `${Math.min(100, status.percent)}%` }}
                 />
               </div>
-              <p className="mt-1.5 text-[11px] text-[var(--muted)]">
+              <p className="limits__hint">
                 {over
                   ? `${Math.abs(status.remaining).toLocaleString()} over limit`
                   : `${status.remaining.toLocaleString()} remaining`}

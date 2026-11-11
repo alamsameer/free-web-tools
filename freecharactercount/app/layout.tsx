@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { DM_Sans, Fraunces } from "next/font/google";
-import "./globals.css";
+import "@/styles/globals.scss";
 
 const body = DM_Sans({
   variable: "--font-body",
@@ -36,10 +36,10 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html
       lang="en"
-      className={`${body.variable} ${display.variable} h-full antialiased`}
+      className={`${body.variable} ${display.variable}`}
     >
-      <body className="relative min-h-full flex flex-col">
-        <div className="relative z-10 flex flex-1 flex-col">{children}</div>
+      <body>
+        <div className="app-shell">{children}</div>
       </body>
     </html>
   );

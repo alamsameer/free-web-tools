@@ -43,22 +43,18 @@ export function TextTools({ text, onChange }: TextToolsProps) {
   ];
 
   return (
-    <section className="mx-auto w-full max-w-[760px]">
-      <h2 className="text-center font-display text-2xl text-[var(--ink)]">
-        Text tools
-      </h2>
-      <p className="mt-1 text-center text-sm text-[var(--muted)]">
-        Transform, copy, or clear your draft
-      </p>
+    <section className="section tools">
+      <h2 className="section__title">Text tools</h2>
+      <p className="section__subtitle">Transform, copy, or clear your draft</p>
 
-      <div className="mt-5 flex flex-wrap items-center justify-center gap-2">
+      <div className="tools__actions">
         {caseActions.map((action) => (
           <button
             key={action.label}
             type="button"
             onClick={action.run}
             disabled={!text}
-            className="rounded-xl border border-[var(--line)] bg-[var(--surface)] px-3.5 py-2 text-sm font-medium text-[var(--ink-soft)] transition-colors hover:border-[var(--accent)] hover:text-[var(--accent)] disabled:cursor-not-allowed disabled:opacity-40"
+            className="tools__btn"
           >
             {action.label}
           </button>
@@ -67,7 +63,7 @@ export function TextTools({ text, onChange }: TextToolsProps) {
           type="button"
           onClick={handleCopy}
           disabled={!text}
-          className="inline-flex items-center gap-1.5 rounded-xl border border-[var(--line)] bg-[var(--surface)] px-3.5 py-2 text-sm font-medium text-[var(--ink-soft)] transition-colors hover:border-[var(--accent)] hover:text-[var(--accent)] disabled:cursor-not-allowed disabled:opacity-40"
+          className="tools__btn"
         >
           {copied ? <Check size={15} /> : <Copy size={15} />}
           {copied ? "Copied" : "Copy"}
@@ -76,7 +72,7 @@ export function TextTools({ text, onChange }: TextToolsProps) {
           type="button"
           onClick={handleClear}
           disabled={!text}
-          className="inline-flex items-center gap-1.5 rounded-xl border border-[var(--line)] bg-[var(--surface)] px-3.5 py-2 text-sm font-medium text-[var(--ink-soft)] transition-colors hover:border-[var(--danger)] hover:text-[var(--danger)] disabled:cursor-not-allowed disabled:opacity-40"
+          className="tools__btn tools__btn--danger"
         >
           <Eraser size={15} />
           Clear
