@@ -12,9 +12,10 @@ import {
 type TextToolsProps = {
   text: string;
   onChange: (value: string) => void;
+  emphasize?: boolean;
 };
 
-export function TextTools({ text, onChange }: TextToolsProps) {
+export function TextTools({ text, onChange, emphasize = false }: TextToolsProps) {
   const [copied, setCopied] = useState(false);
 
   async function handleCopy() {
@@ -43,9 +44,15 @@ export function TextTools({ text, onChange }: TextToolsProps) {
   ];
 
   return (
-    <section className="section tools">
-      <h2 className="section__title">Text tools</h2>
-      <p className="section__subtitle">Transform, copy, or clear your draft</p>
+    <section className={`section tools${emphasize ? " tools--emphasize" : ""}`}>
+      <h2 className="section__title">
+        {emphasize ? "Case converter tools" : "Text tools"}
+      </h2>
+      <p className="section__subtitle">
+        {emphasize
+          ? "Convert case, then copy the result—counts stay visible below"
+          : "Transform, copy, or clear your draft"}
+      </p>
 
       <div className="tools__actions">
         {caseActions.map((action) => (

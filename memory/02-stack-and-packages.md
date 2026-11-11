@@ -13,6 +13,8 @@ Pick a stable stack that deploys cleanly and styles reliably.
 | Icons | `lucide-react` | Simple, consistent icons |
 | Logic | Pure TypeScript `lib/` utilities | Keeps tools free of heavy deps |
 | Hosting | Vercel | Git-connected deploys per tool folder |
+| Analytics | `@vercel/analytics` | Page-view analytics in the Vercel dashboard |
+| Custom domain | Hostinger DNS → Vercel | Domain stays at Hostinger; site runs on Vercel |
 
 ## Packages typically installed
 
@@ -20,11 +22,24 @@ Inside the tool folder:
 
 ```bash
 # app
-npm install next react react-dom lucide-react
+npm install next react react-dom lucide-react @vercel/analytics
 
 # typescript / tooling
 npm install -D typescript @types/node @types/react @types/react-dom eslint eslint-config-next sass
 ```
+
+### Vercel Analytics wiring
+
+In `app/layout.tsx`:
+
+```tsx
+import { Analytics } from "@vercel/analytics/next";
+
+// inside <body>, after children:
+<Analytics />
+```
+
+No env vars required for the basic Web Analytics package. After production traffic, open the Vercel project → **Analytics**.
 
 ## What we deliberately avoid (learned)
 

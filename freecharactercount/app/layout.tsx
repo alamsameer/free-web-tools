@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import { Analytics } from "@vercel/analytics/next";
 import { DM_Sans, Fraunces } from "next/font/google";
+import { SiteFooter } from "@/components/SiteFooter";
+import { SITE_NAME, SITE_URL } from "@/lib/site";
 import "@/styles/globals.scss";
 
 const body = DM_Sans({
@@ -16,14 +18,20 @@ const display = Fraunces({
 });
 
 export const metadata: Metadata = {
-  title: "Free Character Count — online character & word counter",
+  metadataBase: new URL(SITE_URL),
+  title: {
+    default: "Character Counter - Free Online Character & Word Count",
+    template: `%s | ${SITE_NAME}`,
+  },
   description:
-    "Free online character and word counter with live stats, word density, readability, writing suggestions, and social/SEO character limits.",
+    "Free character counter: count characters, words, sentences and spaces instantly. Check X, Instagram, SMS and SEO limits. No signup, nothing uploaded.",
   openGraph: {
     title: "Free Character Count",
     description:
       "Count characters, words, sentences, and more — instantly in your browser.",
     type: "website",
+    url: SITE_URL,
+    siteName: SITE_NAME,
   },
   twitter: {
     card: "summary",
@@ -40,7 +48,10 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       className={`${body.variable} ${display.variable}`}
     >
       <body>
-        <div className="app-shell">{children}</div>
+        <div className="app-shell">
+          {children}
+          <SiteFooter />
+        </div>
         <Analytics />
       </body>
     </html>
