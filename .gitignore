@@ -1,0 +1,15 @@
+# Free Web Tools monorepo
+# Each tool is a standalone project in its own folder.
+
+node_modules/
+.next/
+out/
+build/
+coverage/
+.DS_Store
+*.pem
+.env*
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.vercel
