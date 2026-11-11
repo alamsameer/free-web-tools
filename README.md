@@ -8,11 +8,18 @@ Monorepo for free standalone web tools. Each tool is its own project folder and 
 |------|--------|-------------|
 | Free Character Count | [`freecharactercount`](./freecharactercount) | Live character & word counter |
 
+## Process memory
+
+Step-by-step build/deploy process for any new tool:
+
+- [`memory/`](./memory) — research → stack → implement → monorepo → GitHub → Vercel → pitfalls
+
 ## Add a new tool later
 
-1. Create a new folder at the repo root (e.g. `my-tool/`).
-2. Keep that tool fully standalone (own `package.json`, app code, etc.).
-3. Deploy it on Vercel pointing `rootDirectory` at that folder.
+1. Follow [`memory/README.md`](./memory/README.md).
+2. Create a new folder at the repo root (e.g. `my-tool/`).
+3. Keep that tool fully standalone (own `package.json`, app code, etc.).
+4. Deploy it on Vercel pointing `rootDirectory` at that folder.
 
 ## Free Character Count
 
