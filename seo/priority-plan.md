@@ -84,7 +84,7 @@ Use these on the home page. Ranking wins should come from long-tail multipage, n
 
 ## Phase 5 — Submit and measure (your steps after deploy)
 
-- [ ] Push code and confirm Vercel production deploy succeeds
+- [x] Push code and confirm Vercel production deploy succeeds (`84a2c24` → Vercel production READY)
 - [ ] Submit sitemap in Google Search Console
 - [ ] Request indexing for new URLs
 - [ ] Weekly indexing / query check
